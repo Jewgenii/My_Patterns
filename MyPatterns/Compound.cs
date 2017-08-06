@@ -242,11 +242,6 @@ namespace MyPatterns
                 }
             }
 
-            public void registerObserver()
-            {
-                throw new NotImplementedException();
-            }
-
             public void registerObserver(Observer observer)
             {
                 foreach (Quackable q in quackers)
