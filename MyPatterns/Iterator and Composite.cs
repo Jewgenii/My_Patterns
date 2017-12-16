@@ -11,7 +11,7 @@ namespace MyPatterns
      * povides a way to access the elements of an aggregate object sequentially 
      * without exposing its underlying implementation
      * */
-     namespace Iterator_and_Composite
+    namespace Iterator_and_Composite
     {
         public interface Iterator
         {
@@ -115,7 +115,7 @@ namespace MyPatterns
             public bool MoveNext()
             {
                 if (++position >= menuItems.Count || menuItems[position] == null)// check if the next is null because it concerns the array
-                                                                               // that has max size, but not all positions within the array could be filled in
+                                                                                 // that has max size, but not all positions within the array could be filled in
                     return false;
                 else
                     return true;
@@ -139,7 +139,7 @@ namespace MyPatterns
                 return menuItems[++position];
             }
         }
-        internal class CafeMenuIterator: Iterator
+        internal class CafeMenuIterator : Iterator
         {
             Hashtable h;
             object[] a;
@@ -159,12 +159,12 @@ namespace MyPatterns
 
             public object next()
             {
-                return h[a[i]];
+                return h[a[++i]];
             }
         }
         #endregion
 
-        public class PancakeHouseMenu: IEnumerable, IMenu
+        public class PancakeHouseMenu : IEnumerable, IMenu
         {
             private ArrayList menuItems;
             public PancakeHouseMenu()
@@ -200,11 +200,12 @@ namespace MyPatterns
             }
         }
 
-        public class DinerMenu:IEnumerable, IMenu
+        public class DinerMenu : IEnumerable, IMenu
         {
             public static readonly int maxItems = 6;
             MenuItem[] menuItems;
             int currentItem = 0;
+
             public DinerMenu()
             {
                 menuItems = new MenuItem[maxItems];
@@ -213,6 +214,7 @@ namespace MyPatterns
                 this.AddItem("soup of the day", 1.92d, "soup", true);
                 this.AddItem("hot dog", 3.05d, "tasty wrpped cat", false);
             }
+
             public void AddItem(string description,
                                double price,
                                string name,
@@ -244,7 +246,7 @@ namespace MyPatterns
             public IEnumerator GetEnumerator()
             {
                 return new DinerMenuIterator(menuItems);
-               // return menuItems.GetEnumerator();
+                // return menuItems.GetEnumerator();
 
                 //return menuItems.GetEnumerator(); if an array contains not standart types like UDC
                 //then if you create an enumerator so you have to implement Ienumerable interface and 
@@ -253,7 +255,7 @@ namespace MyPatterns
             }
         }
 
-        public class CafeMenu:IEnumerable, IMenu
+        public class CafeMenu : IEnumerable, IMenu
         {
             private Hashtable menuItems;
             public CafeMenu()
@@ -262,12 +264,11 @@ namespace MyPatterns
                 addItem("Burger", "Burger on wheat bun", false, 3.2);
                 addItem("Soup of the day", "a cup of the soup", true, 2.2);
             }
-            public void addItem(string name,string description,Boolean vegeterian,double price)
+            public void addItem(string name, string description, Boolean vegeterian, double price)
             {
-              MenuItem mi = new MenuItem(description: description, price: price, name: name, vegeterian: vegeterian);
+                MenuItem mi = new MenuItem(description: description, price: price, name: name, vegeterian: vegeterian);
                 this.menuItems.Add(mi.Name, mi);
             }
-
             public IEnumerator GetEnumerator()
             {
                 return menuItems.Values.GetEnumerator();
@@ -278,7 +279,7 @@ namespace MyPatterns
             }
         }
 
-        public class Weitress:IEnumerable
+        public class Weitress : IEnumerable
         {
             private IEnumerable pancakeHouseMenu;
             private IEnumerable dinerMenu;
@@ -291,7 +292,7 @@ namespace MyPatterns
                 this.pancakeHouseMenu = pancakeHouseMenu;
                 this.cafeMenu = cafeMenu;
             }
-            public Weitress( params IEnumerable[] ar)
+            public Weitress(params IEnumerable[] ar)
             {
                 Munues.AddRange(ar);
             }
@@ -356,37 +357,36 @@ namespace MyPatterns
             }
         }
 
-
         /*********************************Composite Pattern**********************************/
         /* allows to compose objects into tree structures to represent part-whole hierarchies.
          * Composite lets clients treat individual objects and compositions of objects uniformly*/
-         /*allows to build structures of trees that contain both compositions of objects 
-          * and individual objects as nodes */
-         /*using a composite structure we can apply the the operations over the composite and 
-          * individual objects in other words we can ignore the differences between
-          compositions of objects and individual objects
-          */
+        /*allows to build structures of trees that contain both compositions of objects 
+         * and individual objects as nodes */
+        /*using a composite structure we can apply the the operations over the composite and 
+         * individual objects in other words we can ignore the differences between
+         compositions of objects and individual objects
+         */
 
-          /*its used when there are collections of objects with whole part relationships
-           * like one component consists of other many the same components or different type components
-           * but supporting the common interface(uniformly) having common methods
-           * 
-           * its a tree structure with haed node on the top
-           * with leaves or nodes
-           * 
-           * - allow access to aggregates elements without exposing its internal structure
-           * - takes the job of iterating  over an aggregate and encapsulates it in another object
-           * - provides a common interface for traversing the items of an aggregate 
-           * allowing   to use polymorphism  when writing code that makes use of the items of the aggregate 
-           * - provides structure to hold both individual elements and composites 
-           * - allows to treat both composites and elements uniformly
-           * - a component is any object in composite structure
-           * - lots of tradeoffs so need to balance between transparency
-           * (the way how you trea elements in structure) and safety
-           * */
+        /*its used when there are collections of objects with whole part relationships
+         * like one component consists of other many the same components or different type components
+         * but supporting the common interface(uniformly) having common methods
+         * 
+         * its a tree structure with haed node on the top
+         * with leaves or nodes
+         * 
+         * - allow access to aggregates elements without exposing its internal structure
+         * - takes the job of iterating  over an aggregate and encapsulates it in another object
+         * - provides a common interface for traversing the items of an aggregate 
+         * allowing   to use polymorphism  when writing code that makes use of the items of the aggregate 
+         * - provides structure to hold both individual elements and composites 
+         * - allows to treat both composites and elements uniformly
+         * - a component is any object in composite structure
+         * - lots of tradeoffs so need to balance between transparency
+         * (the way how you trea elements in structure) and safety
+         * */
 
-        public abstract class MenuComponent:IEnumerable // to allow to iterate over the whole collection
-            // in all nodes
+        public abstract class MenuComponent : IEnumerable // to allow to iterate over the whole collection
+                                                          // in all nodes
         {
             #region Composite Methods
             public virtual void add(MenuComponent menuComponent)
@@ -402,7 +402,7 @@ namespace MyPatterns
                 throw new ApplicationException("Unsuppoted operation");
             }
             #endregion
-            
+
             #region Operation methods used by MenuItems
             public virtual string getName()
             {
@@ -462,17 +462,17 @@ namespace MyPatterns
             }
             public override IEnumerator GetEnumerator()
             {
-                 yield return null;
+                yield return null;
             }
         }
-        public class Menu: MenuComponent
+        public class Menu : MenuComponent
         {
-            private ArrayList menuComponents;
+            private List<MenuComponent> menuComponents;
             private string name;
             private string description;
-            public Menu(string name,string description)
+            public Menu(string name, string description)
             {
-                menuComponents = new ArrayList();
+                menuComponents = new List<MenuComponent>(10);
                 this.name = name;
                 this.description = description;
             }
@@ -481,7 +481,7 @@ namespace MyPatterns
                 MenuComponent comp = null;
                 try
                 {
-                    comp = (MenuComponent)menuComponents[i];
+                    comp = menuComponents[i];
                 }
                 catch (IndexOutOfRangeException ex)
                 {
@@ -489,6 +489,7 @@ namespace MyPatterns
                 }
                 return comp;
             }
+
             public override void add(MenuComponent menuComponent)
             {
                 menuComponents.Add(menuComponent);
@@ -510,10 +511,11 @@ namespace MyPatterns
                 Console.WriteLine("name:{0}", name);
                 Console.WriteLine("description:{0}", description);
                 Console.WriteLine("--------------------");
-                IEnumerator ie = menuComponents.GetEnumerator();
+                IEnumerator<MenuComponent> ie = menuComponents.GetEnumerator();
+
                 while (ie.MoveNext())
                 {
-                    MenuComponent mc = (MenuComponent)ie.Current;
+                    MenuComponent mc = ie.Current;
                     mc.print();
                 }
             }
@@ -522,6 +524,7 @@ namespace MyPatterns
                 return menuComponents.GetEnumerator();
             }
         }
+
         public class WaitressComposite
         {
             MenuComponent components;
@@ -534,7 +537,7 @@ namespace MyPatterns
                 this.components.print();
             }
         }
-        public class CompositeIterator:IEnumerator
+        public class CompositeIterator : IEnumerator
         {
             private Stack st;
             public CompositeIterator(IEnumerable inum)

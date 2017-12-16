@@ -18,7 +18,7 @@ namespace MyPatterns
             void notifyObservers();
         }
 
-        public interface Quackable: Quackobservable // who sends notifications plus quacks
+        public interface Quackable : Quackobservable // who sends notifications plus quacks
         {
             void quack();
         }
@@ -28,7 +28,7 @@ namespace MyPatterns
             void update(Quackobservable duck);
         }
 
-        class Duck: Quackobservable
+        class Duck : Quackobservable
         {
             protected Observable observable;
 
@@ -70,10 +70,10 @@ namespace MyPatterns
                 Console.WriteLine("quack");
                 notifyObservers();
             }
-          
+
         }
 
-        class DuckCall :Duck, Quackable
+        class DuckCall : Duck, Quackable
         {
             public DuckCall()
             {
@@ -86,7 +86,7 @@ namespace MyPatterns
             }
         }
 
-        class RubberDuck :Duck, Quackable
+        class RubberDuck : Duck, Quackable
         {
             public RubberDuck()
             {
@@ -101,7 +101,7 @@ namespace MyPatterns
         }
 
         //adapter
-        public class Goose 
+        public class Goose
         {
             public void honk()
             {
@@ -109,7 +109,7 @@ namespace MyPatterns
             }
         }
 
-        public class GooseAdapter: Quackable // use goose as a duck
+        public class GooseAdapter : Quackable // use goose as a duck
         {
             private Goose goose;
 
@@ -134,7 +134,7 @@ namespace MyPatterns
             }
         }
         //decorator
-        public class QuackableCounter: Quackable
+        public class QuackableCounter : Quackable
         {
             Observable observable;
             Quackable duck;
@@ -171,7 +171,7 @@ namespace MyPatterns
             public abstract Quackable createMallardDuck();
             public abstract Quackable createRedHeadDuck();
             public abstract Quackable createDuckCall();
-            public abstract Quackable createRubberDuck();  
+            public abstract Quackable createRubberDuck();
         }
         public class DuckFactory : AbstractFactory
         {
@@ -252,7 +252,7 @@ namespace MyPatterns
         }
         // obsever
 
-        public class Observable: Quackobservable
+        public class Observable : Quackobservable
         {
             Quackable duck;
             List<Observer> observers = new List<Observer>();
@@ -266,7 +266,7 @@ namespace MyPatterns
                 notifyObservers();
             }
 
-            public void registerObserver(Observer  observer)
+            public void registerObserver(Observer observer)
             {
                 observers.Add(observer);
             }
@@ -279,7 +279,7 @@ namespace MyPatterns
                     Observer ob = (Observer)iter.Current;
                     ob.update(duck);
                 }
-            }     
+            }
 
         }
 

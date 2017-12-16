@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MyPatterns
-{ 
+{
     #region Vendor Classes
     public class Light
     {
         string name;
-    public Light(string name = "")
+        public Light(string name = "")
         {
             this.name = name;
         }
-    public void on()
+        public void on()
         {
             Console.WriteLine(name + " Light is on");
         }
@@ -61,11 +61,11 @@ namespace MyPatterns
         }
         public void SetCD()
         {
-        Console.WriteLine("CD is set");
+            Console.WriteLine("CD is set");
         }
         public void SetDVD()
         {
-        Console.WriteLine("DVD is set");
+            Console.WriteLine("DVD is set");
         }
         public void SetRadio()
         {
@@ -74,13 +74,13 @@ namespace MyPatterns
         public void SetVolume(int volume)
         {
             this.volume = volume;
-            Console.WriteLine("Volume is set {0}",this.volume);
+            Console.WriteLine("Volume is set {0}", this.volume);
         }
 
-}
+    }
     public class CeleingFan
     {
-        public enum SpeedFan: int { HIGH = 3 , MEDIUM = 2, LOW = 1, OFF = 0 }
+        public enum SpeedFan : int { HIGH = 3, MEDIUM = 2, LOW = 1, OFF = 0 }
         String location;
         SpeedFan speed;
         public SpeedFan Speed { get { return speed; } set { speed = value; } }
@@ -244,7 +244,7 @@ namespace MyPatterns
     }
     /////////////////////////////////
 
-    public abstract class CeleingFanCommonClassCommand: ICommand
+    public abstract class CeleingFanCommonClassCommand : ICommand
     {
         protected CeleingFan cf;
         protected CeleingFan.SpeedFan prevSpeed;
@@ -287,7 +287,7 @@ namespace MyPatterns
         {
             prevSpeed = cf.Speed;
             cf.high();
-        }  
+        }
     }
     public class CeleingFanMediumCommand : CeleingFanCommonClassCommand
     {
@@ -314,7 +314,7 @@ namespace MyPatterns
         }
     }
     public class CeleingFanOffCommand : CeleingFanCommonClassCommand
-    {   
+    {
         public CeleingFanOffCommand(CeleingFan cf)
         {
             this.cf = cf;
@@ -326,7 +326,7 @@ namespace MyPatterns
         }
     }
     /////////////////////////////////
-    public class MacroCommand:ICommand
+    public class MacroCommand : ICommand
     {
         ICommand[] commands;
         public MacroCommand(ICommand[] commands)
@@ -368,6 +368,7 @@ namespace MyPatterns
         ICommand[] OnCommands;
         ICommand[] OffCommands;
         ICommand previous;
+
         public RemoteControl()
         {
             OnCommands = new ICommand[7];
@@ -388,7 +389,7 @@ namespace MyPatterns
                 OnCommands[islot] = OnCommand;
                 OffCommands[islot] = OffCommand;
             }
-            catch(IndexOutOfRangeException ex)
+            catch (IndexOutOfRangeException ex)
             {
                 Console.WriteLine(ex.Message);
                 throw;
@@ -428,7 +429,7 @@ namespace MyPatterns
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("\n--------Remote Control--------\n");
-            for(int i = 0;i< OnCommands.Length; ++i)
+            for (int i = 0; i < OnCommands.Length; ++i)
             {
                 sb.Append("[slot " + i + " ]" + OnCommands.GetType().Name + "  " + OffCommands.GetType().Name + "\n");
             }
@@ -437,7 +438,7 @@ namespace MyPatterns
         }
     }
 
-    
+
     class Command
     {
 

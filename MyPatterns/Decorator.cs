@@ -23,7 +23,7 @@ namespace MyPatterns
      * 5.objects can be decorated at any time, so we can decorate objects dynamically at runtime
      * with as many decorators as we like
      * */
-    
+
     public abstract class Beverage
     {
         protected string description = "Unknown Beverage";
@@ -34,7 +34,7 @@ namespace MyPatterns
         public abstract double Cost();
     }
 
-    public abstract class CondimentDecorator:Beverage
+    public abstract class CondimentDecorator : Beverage
     {
         public override string GetDescription()
         {
@@ -79,7 +79,7 @@ namespace MyPatterns
         public Decaf() { this.description = "Decaf Coffee"; }
     }
 
-    public class Mocha: CondimentDecorator
+    public class Mocha : CondimentDecorator
     {
         private Beverage beverage;
         public Mocha(Beverage beverage) { this.beverage = beverage; }

@@ -31,14 +31,14 @@ namespace MyPatterns
          *  
          *  */
 
-            /*
-             * virtual proxy controls access to an object that is expensive to instantiate 
-             * protection proxy controls access to methods of an object based on the caller.
-             * structurally similar to decorator but differ in purpose 
-             * 
-             * 
-             * 
-             * */
+        /*
+         * virtual proxy controls access to an object that is expensive to instantiate 
+         * protection proxy controls access to methods of an object based on the caller.
+         * structurally similar to decorator but differ in purpose 
+         * 
+         * 
+         * 
+         * */
         public interface IPersonBean
         {
             string getName();
@@ -51,7 +51,7 @@ namespace MyPatterns
             void setHotOrNotRating();
         }
         // protection proxy controlls object acces based  on the rights
-// one should not change the someones values any user can call any method it need to be protected!!!
+        // one should not change the someones values any user can call any method it need to be protected!!!
         public class PersonBean : IPersonBean
         {
             string name;

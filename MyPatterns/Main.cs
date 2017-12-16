@@ -70,8 +70,8 @@ namespace MyPatterns
         static void Main(string[] args)
         {
             #region StrategyPattern
-            MyFlyingDuck myfly = new MyFlyingDuck(new FlyWithWings()," duck");
-          
+            MyFlyingDuck myfly = new MyFlyingDuck(new FlyWithWings(), " duck");
+
             myfly.doFly();
             myfly.ChangeFlyBehavior = new RocketFlyBehavior();
             myfly.doFly();
@@ -168,6 +168,7 @@ namespace MyPatterns
             //    rc.undoButtonWasPushed();
             //}
             /////////////////////////////////////////////////////////////////
+
             CeleingFan cf = new CeleingFan("Living Room");
             CeleingFanCommonClassCommand high = new CeleingFanHighCommand(cf);
             CeleingFanCommonClassCommand medium = new CeleingFanMediumCommand(cf);

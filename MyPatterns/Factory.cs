@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MyPatterns
-{       
+{
     /*
      * Factory method pattern defines an interface for creating an object but lets
      * basclasses decide which class no instatiate. Factory Method lets a class defer
@@ -131,7 +131,7 @@ namespace MyPatterns
         public override string ToString()
         {
             string s = null;
-            s = "Pizza: " + name +  "\n";
+            s = "Pizza: " + name + "\n";
             s += "dough " + dough + "\n";
             s += "sauce " + sauce + "\n";
             s += "clams " + clams + "\n";
@@ -141,7 +141,7 @@ namespace MyPatterns
     #endregion
 
     #region Ingredients
-  
+
     public abstract class Pepperoni
     {
 
@@ -518,7 +518,7 @@ namespace MyPatterns
             else if (name == "CheesePizza")
             {
                 p = new CheesePizza(ingredientFactory);
-                
+
                 p.Name = "NYPizzaStore.CheesePizza";
             }
             return p;

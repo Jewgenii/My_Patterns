@@ -188,7 +188,7 @@ takes care of the rest.
             }
         }
 
-        public class DjView: BeatObserver, BPMObserver
+        public class DjView : BeatObserver, BPMObserver
         {
             BeatModelInterface model;
             ControllerInterface controller;
@@ -199,8 +199,8 @@ takes care of the rest.
              * bars classes
              * and other
              * */
-             public DjView(BeatModelInterface model,
-                            ControllerInterface controller)
+            public DjView(BeatModelInterface model,
+                           ControllerInterface controller)
             {
                 this.model = model;
                 this.controller = controller;
@@ -260,7 +260,7 @@ takes care of the rest.
             public BreatController(BeatModelInterface model)
             {
                 this.model = model;
-                view = new DjView(controller:this, model: model);
+                view = new DjView(controller: this, model: model);
                 view.createview();
                 view.createControls();
                 model.initialize();
@@ -311,7 +311,7 @@ takes care of the rest.
         public class HeartAdapter : BeatModelInterface
         {
             private HeartModelInterface heart;
-            
+
             public HeartAdapter(HeartModelInterface heart)
             {
                 this.heart = heart;
@@ -319,7 +319,7 @@ takes care of the rest.
 
             public int getBPM()
             {
-               return heart.getHeartRate();
+                return heart.getHeartRate();
             }
 
             public void initialize()
@@ -329,12 +329,12 @@ takes care of the rest.
 
             public void off()
             {
-                
+
             }
 
             public void on()
             {
-               
+
             }
 
             public void registerObserver(BPMObserver o)
@@ -359,7 +359,7 @@ takes care of the rest.
 
             public void setBPM(int bmp)
             {
-               
+
             }
         } // use something like something else
 
@@ -378,27 +378,27 @@ takes care of the rest.
 
             public void decreaseBMP()
             {
-               
+
             }
 
             public void increaseBMP()
             {
-               
+
             }
 
             public void setBMP(int i)
             {
-               
+
             }
 
             public void start()
             {
-               
+
             }
 
             public void stop()
             {
-               
+
             }
         }
 

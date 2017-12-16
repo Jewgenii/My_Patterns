@@ -24,7 +24,7 @@ namespace MyPatterns
         {
 
         }
-        public static Singleton  getInstance() //synchronized  - thread safe but slows down the performance
+        public static Singleton getInstance() //synchronized  - thread safe but slows down the performance
         {
             if (unique != null)
                 unique = new Singleton();// if it never needs the instance it never gets created(lazy instantiation)

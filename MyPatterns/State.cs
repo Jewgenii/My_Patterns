@@ -124,7 +124,8 @@ namespace MyPatterns
                 {
                     state = noQueter;
                 }
-            } else if (state == noQueter)
+            }
+            else if (state == noQueter)
             {
                 Console.WriteLine("you need to pay first");
             }
@@ -132,11 +133,11 @@ namespace MyPatterns
             {
                 Console.WriteLine("gumball is dispensed");
             }
-            else if (state  == hasQueter)
+            else if (state == hasQueter)
             {
                 Console.WriteLine("no gumball is dispensed");
             }
-         
+
         }
         public override string ToString()
         {
@@ -165,13 +166,13 @@ namespace MyPatterns
      * */
     public class GumBallMachine
     {
-       private State soldOutState;
-       private State noQuarterState;
-       private State hasQuarterState;
-       private State soldState;
-       private State state;
-       private State WinnerState;
-       private int count = 0; //initially its empty
+        private State soldOutState;
+        private State noQuarterState;
+        private State hasQuarterState;
+        private State soldState;
+        private State state;
+        private State WinnerState;
+        private int count = 0; //initially its empty
 
         public GumBallMachine(int ngumballs)
         {
@@ -186,7 +187,7 @@ namespace MyPatterns
             state = soldOutState;
 
             if (ngumballs > 0)
-                 state = noQuarterState;
+                state = noQuarterState;
         }
         public void InsertQuarter()
         {
@@ -213,7 +214,7 @@ namespace MyPatterns
         {
             return WinnerState;
         }
-        
+
 
         public void EjectQuarter()
         {
@@ -307,7 +308,7 @@ namespace MyPatterns
             gumballMachine.setState(gumballMachine.getSoldState());
         }
     }
-    public class SoldState: State
+    public class SoldState : State
     {
         private GumBallMachine gumballMachine;
         public SoldState(GumBallMachine g)
@@ -344,7 +345,7 @@ namespace MyPatterns
             Console.WriteLine("turning twice doesnt get you another one");
         }
     }
-    public class SoldOutState:State
+    public class SoldOutState : State
     {
         private GumBallMachine gumballMachine;
         public SoldOutState(GumBallMachine g)
@@ -376,6 +377,7 @@ namespace MyPatterns
     public class WinnerState : State
     {
         private GumBallMachine gumballMachine;
+
         public WinnerState(GumBallMachine g)
         {
             gumballMachine = g;

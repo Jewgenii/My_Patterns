@@ -12,11 +12,11 @@ namespace MyPatterns
      * Adapter lets classes work together that couldnt otherwise because of incompetible interfaces.
      * */
 
-        /* it allow to use a client with incompatible interface by creating an adapter that does the convertion
-         * this decouples the client from the implemented interface and if we expcet the interface to change over the time 
-         * the adapter encapsulates that change so that the client doesnt have to be modifyed each time it needs to
-         * operate against a different interface.
-         * */
+    /* it allow to use a client with incompatible interface by creating an adapter that does the convertion
+     * this decouples the client from the implemented interface and if we expcet the interface to change over the time 
+     * the adapter encapsulates that change so that the client doesnt have to be modifyed each time it needs to
+     * operate against a different interface.
+     * */
     namespace Adapter
     {
         public interface ITurkey
@@ -29,14 +29,14 @@ namespace MyPatterns
             void quack();
             void fly();
         }
-       
-         /*
-          * - the client makes a request to the adapter by callining a method  on its using the target interface.
-          * - the adapter translates the request into one or more calls on the adaptee using the adaptee interface.  
-          * - the client receives the results of the call and never knows there is an adapter doing the translation.
-          * - client and the adaptee are decoupled
-          * */
-        class MalardDuck: IDuck
+
+        /*
+         * - the client makes a request to the adapter by callining a method  on its using the target interface.
+         * - the adapter translates the request into one or more calls on the adaptee using the adaptee interface.  
+         * - the client receives the results of the call and never knows there is an adapter doing the translation.
+         * - client and the adaptee are decoupled
+         * */
+        class MalardDuck : IDuck
         {
             public void quack()
             {
@@ -48,7 +48,7 @@ namespace MyPatterns
             }
         }
 
-        public class WildTurkey: ITurkey
+        public class WildTurkey : ITurkey
         {
             public void gobble()
             {
@@ -61,7 +61,7 @@ namespace MyPatterns
         }
 
         /*The adapter implements the target interface and holds an instance of  the Adaptee */
-        public class TurkeyAdapterToIDuck: IDuck // implementing the inteface of the type we are adapting to, that client expects to see
+        public class TurkeyAdapterToIDuck : IDuck // implementing the inteface of the type we are adapting to, that client expects to see
         {
             private ITurkey turkey;
             public TurkeyAdapterToIDuck(ITurkey turkey) // get the reference to the object that we are adapting
@@ -74,8 +74,8 @@ namespace MyPatterns
             }
             public void fly()
             {
-                for(int i = 0;i<5;i++)
-                turkey.fly();
+                for (int i = 0; i < 5; i++)
+                    turkey.fly();
             }
         } // it implements the target interface the IDuck
 
@@ -90,7 +90,7 @@ namespace MyPatterns
             {
                 duck.quack();
             }
-             void ITurkey.fly()
+            void ITurkey.fly()
             {
                 duck.fly();
             }

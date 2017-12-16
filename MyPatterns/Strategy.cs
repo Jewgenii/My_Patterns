@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyPatterns
 {
-                /*                        Strategy   
-             * defines a family of algorithms,encapsulates each one ,
-             * and makes them interchangengable.
-             * Strategy lets the algorithm vary independently from clients that use it.
-             * */
+    /*                        Strategy   
+ * defines a family of algorithms,encapsulates each one ,
+ * and makes them interchangengable.
+ * Strategy lets the algorithm vary independently from clients that use it.
+ * */
     interface IFliable
     {
         void Fly();
